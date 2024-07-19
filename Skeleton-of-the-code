@@ -1,0 +1,153 @@
+This is the skeleton version of the code. 
+The skeleton version of my UNO_game code doesn't concern the more complicated features of UNO, like:
+- Wild Cards
+- Wild Draw Four cards
+- AI/Computer players
+
+SKELETON OF THE CODE:
+
+import random
+
+class UnoCard:
+    '''represents an Uno card
+    attributes:
+      rank: int from 0 to 9
+      color: string'''
+
+    def __init__(self, rank, color):
+        '''UnoCard(rank, color) -> UnoCard
+        creates an Uno card with the given rank and color'''
+        pass
+
+    def __str__(self):
+        '''str(Unocard) -> str'''
+        pass
+
+    def is_match(self, other):
+        '''UnoCard.is_match(UnoCard) -> boolean
+        returns True if the cards match in rank or color, False if not'''
+        pass
+
+class UnoDeck:
+    '''represents a deck of Uno cards
+    attribute:
+      deck: list of UnoCards'''
+
+    def __init__(self):
+        '''UnoDeck() -> UnoDeck
+        creates a new full Uno deck'''
+        pass
+
+    def __str__(self):
+        '''str(Unodeck) -> str'''
+        pass
+
+    def is_empty(self):
+        '''UnoDeck.is_empty() -> boolean
+        returns True if the deck is empty, False otherwise'''
+        pass
+
+    def deal_card(self):
+        '''UnoDeck.deal_card() -> UnoCard
+        deals a card from the deck and returns it
+        (the dealt card is removed from the deck)'''
+        pass
+
+    def reset_deck(self, pile):
+        '''UnoDeck.reset_deck(pile)
+        resets the deck from the pile'''
+        pass
+
+class UnoPile:
+    '''represents the discard pile in Uno
+    attribute:
+      pile: list of UnoCards'''
+
+    def __init__(self, deck):
+        '''UnoPile(deck) -> UnoPile
+        creates a new pile by drawing a card from the deck'''
+        pass
+
+    def __str__(self):
+        '''str(UnoPile) -> str'''
+        pass
+
+    def top_card(self):
+        '''UnoPile.top_card() -> UnoCard
+        returns the top card in the pile'''
+        pass
+
+    def add_card(self, card):
+        '''UnoPile.add_card(card) -> None
+        adds the card to the top of the pile'''
+        pass
+
+    def reset_pile(self):
+        '''UnoPile.reset_pile() -> list
+        removes all but the top card from the pile and
+          returns the rest of the cards as a list of UnoCards'''
+        pass
+
+class UnoPlayer:
+    '''represents a player of Uno
+    attributes:
+      name: a string with the player's name
+      hand: a list of UnoCards'''
+
+    def __init__(self, name, deck):
+        '''UnoPlayer(name, deck) -> UnoPlayer
+        creates a new player with a new 7-card hand'''
+        pass
+
+    def __str__(self):
+        '''str(UnoPlayer) -> UnoPlayer'''
+        pass
+
+    def get_name(self):
+        '''UnoPlayer.get_name() -> str
+        returns the player's name'''
+        pass
+
+    def get_hand(self):
+        '''get_hand(self) -> str
+        returns a string representation of the hand, one card per line'''
+        pass
+
+    def has_won(self):
+        '''UnoPlayer.has_won() -> boolean
+        returns True if the player's hand is empty (player has won)'''
+        pass
+
+    def draw_card(self, deck):
+        '''UnoPlayer.draw_card(deck) -> UnoCard
+        draws a card, adds to the player's hand
+          and returns the card drawn'''
+        pass
+
+    def play_card(self, card, pile):
+        '''UnoPlayer.play_card(card, pile) -> None
+        plays a card from the player's hand to the pile
+        CAUTION: does not check if the play is legal!'''
+        pass
+
+    def take_turn(self, deck, pile):
+        '''UnoPlayer.take_turn(deck, pile) -> None
+        takes the player's turn in the game
+          deck is an UnoDeck representing the current deck
+          pile is an UnoPile representing the discard pile'''
+        pass
+
+def play_uno(numPlayers):
+    '''play_uno(numPlayers) -> None
+    plays a game of Uno with numPlayers
+    Pseudocode:
+    Set up a new deck and new pile
+    Set up the players: ask each player for their name and create an UnoPlayer object for that player
+    Pick a player to go first
+    Until somebody wins:
+        Print the status of the game (the players and the number of cards they each have)
+        Take the current player's turn
+        See if the current player has won -- if so, end the game
+        Go to the next player
+    '''
+    pass
