@@ -1,0 +1,171 @@
+I added the wild cards to my code, which is now different with the added wild cards, from my code from the "Advancing from skeleton code" text file.
+
+Here's how I added the wild cards:
+
+First, we'll need to create a new WildCard class that inherits from ActionCard.
+The new WildCard class will represent the wild cards.
+
+Next, we need to modify the UnoDeck class to include the wild cards in the deck.
+
+Finally, we will modify the method to handle wild cards (as suggested in the hints) to handle the wild cards when they are played.
+This allows the players to change the color of the game and, in the case of "Wild Draw Four" card, we can make the next player draw four cards and skip their turn.
+
+MY CODE:
+import random
+
+class UnoCard:
+    '''represents an Uno card
+    attributes:
+      rank: int from 0 to 9
+      color: string'''
+
+    def __init__(self, rank, color):
+        '''UnoCard(rank, color) -> UnoCard
+        creates an Uno card with the given rank and color'''
+        self.rank = rank
+        self.color = color
+
+    def __str__(self):
+        '''str(Unocard) -> str'''
+        return(str(self.color) + ' ' + str(self.rank))
+
+    def is_match(self, other):
+        '''UnoCard.is_match(UnoCard) -> boolean
+        returns True if the cards match in rank or color, False if not'''
+        return (self.color == other.color) or (self.rank == other.rank)
+
+class ActionCard(UnoCard):
+    '''represents an Uno action card
+    attributes:
+      action: string, either 'skip', 'reverse', or 'drawTwo'
+      color: string
+    '''
+    def __init__(self, action, color):
+        '''ActionCard(action, color) -> ActionCard
+        creates an Uno action card with the given action and color'''
+        self.action = action
+        self.color = color
+
+    def __str__(self):
+        '''str(ActionCard) -> str'''
+        return(self.color + ' ' + self.action)
+
+    def is_match(self, other):
+        '''ActionCard.is_match(UnoCard) -> boolean
+        returns True if the cards match in action or color, False if not'''
+        return (self.color == other.color) or (self.action == other.action)
+
+#New notes for Problem 2 Part (A)
+
+'''First, we'll need to create a new WildCard class that inherits from ActionCard. 
+This class will represent the wild cards.
+
+Next, we need to modify the UnoDeck class to include the wild cards in the deck.
+
+Finally, we will modify the 
+ method to handle the wild cards when they are played, allowing players to change the 
+ color of the game and, in the case of a "Wild Draw Four" card, make the next player 
+ draw four cards and skip their turn.'''
+
+#Hint(s): This probably involves modifying UnoCard.is_match() method to account for 
+#wild cards, and also adding some code somewhere that lets the player specify the new color.
+
+class WildCard(ActionCard):
+    '''represents a Wild card
+    attributes:
+      action: string, either 'wild' or 'wildDrawFour'
+    '''
+    def __init__(self, action):
+        '''WildCard(action) -> WildCard
+        creates a Wild card with the given action'''
+        self.action = action
+        self.color = None  # Wild cards have no color initially
+
+    def __str__(self):
+        '''str(WildCard) -> str'''
+        return self.action
+
+    def is_match(self, other):
+        '''WildCard.is_match(UnoCard) -> boolean
+        returns True if the card is a Wild card, False if not'''
+        return self.action in ['wild', 'wildDrawFour']
+
+class UnoDeck:
+    '''represents a deck of Uno cards
+    attribute:
+      deck: list of UnoCards'''
+
+    def __init__(self):
+        '''UnoDeck() -> UnoDeck
+        creates a new full Uno deck'''
+        self.deck = []
+        for color in ['red', 'blue', 'green', 'yellow']:
+            self.deck.append(UnoCard(0, color))  # one 0 of each color
+            for i in range(2):
+                for n in range(1, 10):  # two of each of 1-9 of each color
+                    self.deck.append(UnoCard(n, color))
+            # add action cards
+            for action in ['skip', 'reverse', 'drawTwo']:
+                for i in range(2):
+                    self.deck.append(ActionCard(action, color))
+        # add wild cards
+        for i in range(4):
+            self.deck.append(WildCard('wild'))
+        for i in range(4):
+            self.deck.append(WildCard('wildDrawFour'))
+        random.shuffle(self.deck)  # shuffle the deck
+
+    def __str__(self):
+        '''str(Unodeck) -> str'''
+        return 'An Uno deck with '+str(len(self.deck)) + ' cards remaining.'
+
+    def is_empty(self):
+        '''UnoDeck.is_empty() -> boolean
+        returns True if the deck is empty, False otherwise'''
+        return len(self.deck) == 0
+
+    def deal_card(self):
+        '''UnoDeck.deal_card() -> UnoCard
+        deals a card from the deck and returns it
+        (the dealt card is removed from the deck)'''
+        return self.deck.pop()
+
+    def reset_deck(self, pile):
+        '''UnoDeck.reset_deck(pile) -> None
+        resets the deck from the pile'''
+        if len(self.deck) != 0:
+            return
+        self.deck = pile.reset_pile() # get cards from the pile
+        random.shuffle(self.deck)  # shuffle the deck
+
+class UnoPile:
+    '''represents the discard pile in Uno
+    attribute:
+      pile: list of UnoCards'''
+
+    def __init__(self, deck):
+        '''UnoPile(deck) -> UnoPile
+        creates a new pile by drawing a card from the deck'''
+        card = deck.deal_card()
+        self.pile = [card]  # all the cards in the pile
+
+    def __str__(self):
+        '''str(UnoPile) -> str'''
+        return 'The pile has ' + str(self.pile[-1]) + ' on top.'
+
+    def top_card(self):
+        '''UnoPile.top_card() -> UnoCard
+        returns the top card in the pile'''
+        return self.pile[-1]
+
+    def add_card(self, card):
+        '''UnoPile.add_card(card) -> None
+        adds the card to the top of the pile'''
+        self.pile.append(card)
+
+    def reset_pile(self):
+        '''UnoPile.reset_pile() -> list
+        removes all but the top card from the pile and
+          returns the rest of the cards as a list of UnoCards'''
+        newdeck = self.pile[:-1]
+#
