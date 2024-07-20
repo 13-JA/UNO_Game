@@ -1,0 +1,505 @@
+THE TASK:
+Add computer players to our Uno game. 
+That is, when setting up the players, an option should be given for any player to be a computer-controlled player.
+
+My plans for the AI player:
+
+So, what we want to do is make an AI algorithm that the computer uses to select what card to play when it is its turn. So, we'll be making an AI algorithm... The process of programming an AI algorithm is Machine Learning. Machine learning (ML) is the science of giving computers the ability to learn without explicitly being given instructions.
+
+Behind every ML model are mathematical algorithms. An algorithm is a sequence of instructions intended to achieve a specific goal (like a recipe, which has the goal of making whatever dish you want to make).
+
+A machine learning model studies data and identifies patterns in order to make predictions and decisions. It's called "learning" because the programmer isn't directly telling the model what to do (the programmer is essentially, "teaching" the AI how to think for itself with the AI algorithm).
+
+A simple AI algorithm would be for the computer to select one of its playable cards at random. We might be able to do better, though, with a more sophisticated algorithm. However, we have to do a bit of planning and thinking.
+
+The process of teaching the AI to think for itself with the AI algorithm is called "training." We call the information used by models to make predictions and decisions for itself training data.
+
+Training data is the data you use to train an algorithm or ML model to predict the outcome you design your model to predict, in this case, we'll be training our ML model to predict what happens when it makes each decision in the Uno game it will participate in.
+
+Our intention is to train an ML model on the data. In this step, the model captures patterns from the data. We build a model on training data to make predictions. A prediction is the information that the model outputs when tested. Because of ML's relationship with inputs (training data) and outputs (predictions), you can imagine ML as a function. It was an input (x) to map an output (y). In other words, f(x) = y.
+
+The model's inputs are called features. These are the variables (reminder, behind every ML model are MATHEMATICAL algorithms) in your data that machine learning models use to learn. The model's outputs are called labels. This is the variable your model is predicting. For example, let's let this image represent the inputs and outputs of a model. (Please check the image I attached below called, "Inputs and outputs of an ML Model.png" which is an example.)
+
+Machine learning models predict the future, while this seems like a bold statement, it's true. There are different techniques used to teach ML models to make predictions; supervised learning (classification, a type of supervised learning), unsupervised learning, and reinforcement learning. For the given assignment, from what we are told, it seems that we will be using supervised learning. Supervised learning involves training an algorithm on human-labeled data. These algorithms compare their actual outputs with expected outputs to detect errors. This algorithm is best suited for models that are used to make predictions, which is more suitable for our situation.
+
+There are subgroups of each type of ML technique, and one of the specific forms of supervised learning is classification. Classification is a type of supervised learning where models are expected to predict outputs given an input. In this scenario, classification will be used to teach models to predict outputs (moves in the Uno game) given an input (cards available and valid moves to perform).
+
+The method in artificial intelligence that teaches computers to process data in a way that is inspired by the human brain is a neural network. A neural network (which is a ML program/model) provides AI the ability to think and make choices, like how a human brain would. It's a type of ML process, called deep learning, that uses interconnected neurons or nodes in a layered structure, resembling the human brain. Neural networks are important since they aid computers to make wise decisions with limited human assistance. This is because neural networks can learn and model the relationships between input and output data, which can be nonlinear and complex.
+
+Just as there are different types of learning you can use to teach an ML model for your ML techniques, there are different neural networks. For example, the three main types of neural networks are a fully connected neural network, a a convolutional neural network, and a recurrent neural network. A fully connected network is a machine learning technique where you combine multiple machine learning algorithms, which would most likely be deemed unnecessary or a bit extra for our purposes of teaching the AI how to play Uno. Convolutional neural networks are neural networks that specialize in image processing. They learn how to make image filters to apply to the original image to more easily extract important information, and then feed the changed image into a neural network. A convolutional network wouldn't be used for our purposes since it specializes in the area of image processing. However, we COULD use a convolutional network if we wanted to use Turtle to visually show Uno Cards on the screen, but that'd both be a hefty amount of time spent into that, and a waste of resources in the network. Recurrent neural networks are neural networks that specialize in analyzing sequential data, such as audio and text. They use a form of "memory" in the sense that they take information from previous input data to influence the current input and output. A recurrent neural network would be best for our Uno game, since we'll be playing the game in text-form, and having the AI learn from its mistakes in the game could be good.
+
+Okay! We've made some important decisions for what ML model and ML techniques we'll be using.
+Here are our decisions:
+1. We'll be using supervised learning, more specifically, classification.
+2. We'll be using recurrent neural networks for our code
+
+Now, we can go to Replit (My IDLE isn't working) to program our code... But wait! Programming ML and making an AI algorithm in IDLE can prove to be a problematic (one of my Steel City Code teachers said this), and Replit tends to be a bit cloddy for making ML models. That teacher suggested using Tensorflow instead of Replit for programming ML models.
+
+Tensorflow is an open source Python library built by Google that many developers use for building machine learning models. Libraries save us from doing a lot of the complex steps (especially the mathematical aspects) of machine learning. What Tensorflow does to save us time is that it creates a graph of computations with mathematical operations of ML and the data being used. This allows the entire machine learning application to flow smoothly. Like many other machine learning frameworks, TensorFlow relies on multi-dimensional arrays called tensors to store data. Hence the name TENSORflow. Tensors are used to represent input and output data, including all of the intermediate data produced by ML computations. (Intermediate data is any data in a process that didn't exist before the process existed and that will be maintained after the process executes.)
+
+Tensorflow uses Python as a front-end API for building applications and with the framework, it actually has wrappers in several languages including C++ and Java. However, this is a Python course, so we'll be still using our Uno code from earlier and writing code in Python. We've made one final decision, to be using Tensorflow (instead of Replit) for the rest of this coding project. Let's download Tensorflow and program our code now. Well, new update, I need root acess on my computer (which I don't have) to download Tensorflow. Let's just stick to Replit for now.
+
+All of our decisions:
+1. We'll be using supervised learning, more specifically, classification.
+2. We'll be using recurrent neural networks for our code
+3. We'll be using Tensorflow to code in
+
+Research and Notes I used for planning:
+1. https://www.cloudfactory.com/training-data-guide#:~:text=What%20is%20training%20data%20and,using%20to%20train%20the%20machine.
+
+2. https://docs.google.com/presentation/d/1Po5r40TdAWbZ-zyc67-poie5AO5UcQWzjiI04gvsLjI/edit#slide=id.g19364874081_0_226 (I was a steel city codes student last year, so I am reviewing the slides my teacher left me. I am permitted to use these slides.)
+
+3. https://aws.amazon.com/what-is/neural-network/#:~:text=A%20neural%20network%20is%20a,that%20resembles%20the%20human%20brain.
+
+4. https://www.databricks.com/glossary/tensorflow-guide#:~:text=You%20might%20also%20be%20wondering,languages%20including%20C%2B%2B%20and%20Java.
+
+Now that we know the foundations of what we will be programming this AI on, we'll be explaining the AI logic.
+
+1. Match: The AI will prioritize playing cards that match the top card of the pile. If there are multiple matches, then the AI will choose the card with the matching color first, then the card with the higher rank.
+
+2. Wild Draw Four: If there are no matching cards, the AI will check if it can play a Wild Draw Four. It can play this card IF it has no cards in its hand that match the color of the top card.
+
+3. Wild: If there are no matching cards and the AI can't play Wild Draw Four, it will check if it has a Wild Card. It it does, it will play it and choose a RANDOM card...
+
+4. Draw: If the AI can't play any card, it will draw a card from the deck. If the drawn card matches the top card, it will play it. Otherwise, it will skip its turn.
+
+Some key points:
+
+1. The AI's choice-making is based on a set of simple rules that prioritize playing cards that match the top card of the pile and avoid drawing unnecessary cards.
+
+2. The AI can play Wild Draw Four cards only when it's allowed (no matching color cards).
+
+3. The AI can play Wild Draw Four cards only when it's allowed (no matching color cards).
+
+4. The AI chooses a random color when playing Wild cards.
+
+https://cdn.artofproblemsolving.com/school/grid/3962/hw_files/1079729_ls5p4_339ce3322ffc93b4e4a036149cc69fc6f6503150.png (Picture of an example of relantionship between inputs and outputs in ML models)
+
+My final code, with the AI:
+
+# Python Class 3962
+# Lesson 5 Problem 3
+# Author: EarthguardianIris (1079729)
+import random
+
+class UnoCard:
+    '''represents an Uno card
+    attributes:
+      rank: int from 0 to 9
+      color: string'''
+
+    def __init__(self, rank, color):
+        '''UnoCard(rank, color) -> UnoCard
+        creates an Uno card with the given rank and color'''
+        self.rank = rank
+        self.color = color
+
+    def __str__(self):
+        '''str(Unocard) -> str'''
+        return(str(self.color) + ' ' + str(self.rank))
+
+    def is_match(self, other):
+        '''UnoCard.is_match(UnoCard) -> boolean
+        returns True if the cards match in rank or color, False if not'''
+        return (self.color == other.color) or (self.rank == other.rank)
+
+class ActionCard(UnoCard):
+    '''represents an Uno action card
+    attributes:
+      action: string, either 'skip', 'reverse', or 'drawTwo'
+      color: string
+    '''
+    def __init__(self, action, color):
+        '''ActionCard(action, color) -> ActionCard
+        creates an Uno action card with the given action and color'''
+        self.action = action
+        self.color = color
+
+    def __str__(self):
+        '''str(ActionCard) -> str'''
+        return(self.color + ' ' + self.action)
+
+    def is_match(self, other):
+        '''ActionCard.is_match(UnoCard) -> boolean
+        returns True if the cards match in action or color, False if not'''
+        return (self.color == other.color) or (self.action == other.action)
+
+class WildCard(ActionCard):
+    '''represents a Wild card
+    attributes:
+      action: string, either 'wild' or 'wildDrawFour'
+    '''
+    def __init__(self, action):
+        '''WildCard(action) -> WildCard
+        creates a Wild card with the given action'''
+        self.action = action
+        self.color = None  # Wild cards have no color initially
+
+    def __str__(self):
+        '''str(WildCard) -> str'''
+        return self.action
+
+    def is_match(self, other):
+        '''WildCard.is_match(UnoCard) -> boolean
+        returns True if the card is a Wild card, False if not'''
+        return self.action in ['wild', 'wildDrawFour']
+
+    def can_play(self, hand, top_card):
+        '''WildCard.can_play(hand, top_card) -> boolean
+        returns True if the Wild Draw Four card can be played, False if not.
+        The card can be played if the player has no card whose color matches the top card.
+        '''
+        for card in hand:
+            if card.color == top_card.color:
+                return False
+        return True
+
+class UnoDeck:
+    '''represents a deck of Uno cards
+    attribute:
+      deck: list of UnoCards'''
+
+    def __init__(self):
+        '''UnoDeck() -> UnoDeck
+        creates a new full Uno deck'''
+        self.deck = []
+        for color in ['red', 'blue', 'green', 'yellow']:
+            self.deck.append(UnoCard(0, color))  # one 0 of each color
+            for i in range(2):
+                for n in range(1, 10):  # two of each of 1-9 of each color
+                    self.deck.append(UnoCard(n, color))
+            # add action cards
+            for action in ['skip', 'reverse', 'drawTwo']:
+                for i in range(2):
+                    self.deck.append(ActionCard(action, color))
+        # add wild cards
+        for i in range(4):
+            self.deck.append(WildCard('wild'))
+        for i in range(4):
+            self.deck.append(WildCard('wildDrawFour'))
+        random.shuffle(self.deck)  # shuffle the deck
+
+    def __str__(self):
+        '''str(Unodeck) -> str'''
+        return 'An Uno deck with '+str(len(self.deck)) + ' cards remaining.'
+
+    def is_empty(self):
+        '''UnoDeck.is_empty() -> boolean
+        returns True if the deck is empty, False otherwise'''
+        return len(self.deck) == 0
+
+    def deal_card(self):
+        '''UnoDeck.deal_card() -> UnoCard
+        deals a card from the deck and returns it
+        (the dealt card is removed from the deck)'''
+        return self.deck.pop()
+
+    def reset_deck(self, pile):
+        '''UnoDeck.reset_deck(pile) -> None
+        resets the deck from the pile'''
+        if len(self.deck) != 0:
+            return
+        self.deck = pile.reset_pile() # get cards from the pile
+        random.shuffle(self.deck)  # shuffle the deck
+
+class UnoPile:
+    '''represents the discard pile in Uno
+    attribute:
+      pile: list of UnoCards'''
+
+    def __init__(self, deck):
+        '''UnoPile(deck) -> UnoPile
+        creates a new pile by drawing a card from the deck'''
+        card = deck.deal_card()
+        self.pile = [card]  # all the cards in the pile
+
+    def __str__(self):
+        '''str(UnoPile) -> str'''
+        return 'The pile has ' + str(self.pile[-1]) + ' on top.'
+
+    def top_card(self):
+        '''UnoPile.top_card() -> UnoCard
+        returns the top card in the pile'''
+        return self.pile[-1]
+
+    def add_card(self, card):
+        '''UnoPile.add_card(card) -> None
+        adds the card to the top of the pile'''
+        self.pile.append(card)
+
+    def reset_pile(self):
+        '''UnoPile.reset_pile() -> list
+        removes all but the top card from the pile and
+          returns the rest of the cards as a list of UnoCards'''
+        newdeck = self.pile[:-1]
+        self.pile = [self.pile[-1]]
+        return newdeck
+
+class UnoPlayer:
+    '''represents a player of Uno
+    attributes:
+      name: a string with the player's name
+      hand: a list of UnoCards'''
+
+    def __init__(self, name, deck):
+        '''UnoPlayer(name, deck) -> UnoPlayer
+        creates a new player with a new 7-card hand'''
+        self.name = name
+        self.hand = [deck.deal_card() for i in range(7)]
+
+    def __str__(self):
+        '''str(UnoPlayer) -> UnoPlayer'''
+        return str(self.name) + ' has ' + str(len(self.hand)) + ' cards.'
+
+    def get_name(self):
+        '''UnoPlayer.get_name() -> str
+        returns the player's name'''
+        return self.name
+
+    def get_hand(self):
+        '''get_hand(self) -> str
+        returns a string representation of the hand, one card per line'''
+        output = ''
+        for card in self.hand:
+            output += str(card) + '\n'
+        return output
+
+    def has_won(self):
+        '''UnoPlayer.has_won() -> boolean
+        returns True if the player's hand is empty (player has won)'''
+        return len(self.hand) == 0
+
+    def draw_card(self, deck):
+        '''UnoPlayer.draw_card(deck) -> UnoCard
+        draws a card, adds to the player's hand
+          and returns the card drawn'''
+        card = deck.deal_card()  # get card from the deck
+        self.hand.append(card)   # add this card to the hand
+        return card
+
+    def play_card(self, card, pile):
+        '''UnoPlayer.play_card(card, pile) -> None
+        plays a card from the player's hand to the pile
+        CAUTION: does not check if the play is legal!'''
+
+        self.hand.remove(card)
+        pile.add_card(card)
+
+    def take_turn(self, deck, pile, playerList, currentPlayerNum):
+        '''UnoPlayer.take_turn(deck, pile) -> None
+        takes the player's turn in the game
+          deck is an UnoDeck representing the current deck
+          pile is an UnoPile representing the discard pile'''
+        # print player info
+        print(self.name + ", it's your turn.")
+        print(pile)
+        print("Your hand: ")
+        print(self.get_hand())
+        # get a list of cards that can be played
+        topcard = pile.top_card()
+        matches = [card for card in self.hand if card.is_match(topcard)]
+        if len(matches) > 0:  # can play
+            for index in range(len(matches)):
+                # print the playable cards with their number
+                print(str(index + 1) + ": " + str(matches[index]))
+            # get player's choice of which card to play
+            choice = 0
+            while choice < 1 or choice > len(matches):
+                choicestr = input("Which do you want to play? ")
+                if choicestr.isdigit():
+                    choice = int(choicestr)
+            # play the chosen card from hand, add it to the pile
+            card_played = matches[choice - 1]
+            self.play_card(card_played, pile)
+
+            # handle action cards
+            if isinstance(card_played, ActionCard):
+                if card_played.action == 'skip':
+                    print(f"{playerList[currentPlayerNum].get_name()}'s turn is skipped!")
+                    currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+                elif card_played.action == 'reverse':
+                    playerList.reverse()
+                    print("Play order reversed!")
+                    currentPlayerNum = (currentPlayerNum + 1) % len(playerList) # Need to account for reverse
+                elif card_played.action == 'drawTwo':
+                    next_player = (currentPlayerNum + 1) % len(playerList)
+                    playerList[next_player].draw_card(deck)
+                    playerList[next_player].draw_card(deck)
+                    print(f"{playerList[next_player].get_name()} draws two cards!")
+                    currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+            # handle wild cards
+            elif isinstance(card_played, WildCard):
+                if card_played.action == 'wild':
+                    print("You played a Wild card. Choose a new color:")
+                    for i, color in enumerate(['red', 'blue', 'green', 'yellow']):
+                        print(f"{i+1}: {color}")
+                    choice = 0
+                    while choice < 1 or choice > 4:
+                        choicestr = input("Enter your choice: ")
+                        if choicestr.isdigit():
+                            choice = int(choicestr)
+                    card_played.color = ['red', 'blue', 'green', 'yellow'][choice - 1]
+                    print(f"The new color is {card_played.color}")
+                elif card_played.action == 'wildDrawFour':
+                    if card_played.can_play(self.hand, topcard):
+                        print("You played a Wild Draw Four card!")
+                        next_player = (currentPlayerNum + 1) % len(playerList)
+                        for _ in range(4):  # Draw 4 cards
+                            playerList[next_player].draw_card(deck)
+                        print(f"{playerList[next_player].get_name()} draws four cards and their turn is skipped.")
+                        currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+                    else:
+                        print("You can't play Wild Draw Four! You have a matching color card.")
+                        currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+        else:  # can't play
+            print("You can't play, so you have to draw.")
+            input("Press enter to draw.")
+            # check if deck is empty -- if so, reset it
+            if deck.is_empty():
+                deck.reset_deck(pile)
+            # draw a new card from the deck
+            newcard = self.draw_card(deck)
+            print("You drew: "+str(newcard))
+            if newcard.is_match(topcard): # can be played
+                print("Good -- you can play that!")
+                self.play_card(newcard,pile)
+            else:   # still can't play
+                print("Sorry, you still can't play.")
+            input("Press enter to continue.")
+        return currentPlayerNum
+
+def play_uno(numPlayers):
+    '''play_uno(numPlayers) -> None
+    plays a game of Uno with numPlayers'''
+    # set up full deck and initial discard pile
+    deck = UnoDeck()
+    pile = UnoPile(deck)
+    # set up the players
+    playerList = [] #list must be mutable 
+    for n in range(numPlayers):
+        # get each player's name, then create an UnoPlayer
+        if n == 0:
+            name = "Computer"
+            playerList.append(AIPlayer(name, deck))
+        else:
+            name = input('Player #' + str(n + 1) + ', enter your name: ')
+            playerList.append(UnoPlayer(name,deck))
+    # randomly assign who goes first
+    currentPlayerNum = random.randrange(numPlayers)
+    # play the game
+    while True:
+        # print the game status
+        print('-------')
+        for player in playerList:
+            print(player)
+        print('-------')
+        # take a turn
+        if isinstance(playerList[currentPlayerNum], AIPlayer):
+            currentPlayerNum = playerList[currentPlayerNum].take_turn(deck, pile, playerList, currentPlayerNum)
+        else:
+            currentPlayerNum = playerList[currentPlayerNum].take_turn(deck, pile, playerList, currentPlayerNum)
+        # check for a winner
+        if playerList[currentPlayerNum].has_won():
+            print(playerList[currentPlayerNum].get_name() + " wins!")
+            print("Thanks for playing!")
+            break
+        # go to the next player
+        currentPlayerNum = (currentPlayerNum + 1) % numPlayers
+
+class AIPlayer(UnoPlayer):
+    def __init__(self, name, deck):
+        super().__init__(name, deck)
+
+    def take_turn(self, deck, pile, playerList, currentPlayerNum):
+        '''AIPlayer.take_turn(deck, pile) -> None
+        takes the player's turn in the game
+          deck is an UnoDeck representing the current deck
+          pile is an UnoPile representing the discard pile'''
+
+        print(self.name + ", it's your turn.")
+        print(pile)
+        print("Your hand: ")
+        print(self.get_hand())
+        topcard = pile.top_card()
+
+        # 1. Check for matching cards
+        matches = [card for card in self.hand if card.is_match(topcard)]
+        if matches:
+            # Prioritize matching color, then rank
+            matches.sort(key=lambda card: (card.color == topcard.color, card.rank), reverse=True)
+            card_played = matches[0]
+            self.play_card(card_played, pile)
+            print(f"{self.name} played: {card_played}")
+            # Handle action cards
+            if isinstance(card_played, ActionCard):
+                if card_played.action == 'skip':
+                    print(f"{playerList[currentPlayerNum].get_name()}'s turn is skipped!")
+                    currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+                elif card_played.action == 'reverse':
+                    playerList.reverse()
+                    print("Play order reversed!")
+                    currentPlayerNum = (currentPlayerNum + 1) % len(playerList)  # Need to account for reverse
+                elif card_played.action == 'drawTwo':
+                    next_player = (currentPlayerNum + 1) % len(playerList)
+                    playerList[next_player].draw_card(deck)
+                    playerList[next_player].draw_card(deck)
+                    print(f"{playerList[next_player].get_name()} draws two cards!")
+                    currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+            # Handle wild cards
+            elif isinstance(card_played, WildCard):
+                if card_played.action == 'wild':
+                    # Choose a random color
+                    new_color = random.choice(['red', 'blue', 'green', 'yellow'])
+                    card_played.color = new_color
+                    print(f"The new color is {card_played.color}")
+                elif card_played.action == 'wildDrawFour':
+                    if card_played.can_play(self.hand, topcard):
+                        next_player = (currentPlayerNum + 1) % len(playerList)
+                        for _ in range(4):  # Draw 4 cards
+                            playerList[next_player].draw_card(deck)
+                        print(f"{playerList[next_player].get_name()} draws four cards and their turn is skipped.")
+                        currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+                    else:
+                        print("AI cannot play Wild Draw Four! It has a matching color card.")
+                        currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+        else:
+            # 2. Check for Wild Draw Four (if allowed)
+            wild_draw_four_cards = [card for card in self.hand if card.action == 'wildDrawFour' and card.can_play(self.hand, topcard)]
+            if wild_draw_four_cards:
+                card_played = wild_draw_four_cards[0]
+                self.play_card(card_played, pile)
+                print(f"{self.name} played: {card_played}")
+
+                # Choose a random color
+                new_color = random.choice(['red', 'blue', 'green', 'yellow'])
+                card_played.color = new_color
+                print(f"The new color is {card_played.color}")
+
+                next_player = (currentPlayerNum + 1) % len(playerList)
+                for _ in range(4):
+                    playerList[next_player].draw_card(deck)
+                print(f"{playerList[next_player].get_name()} draws four cards and their turn is skipped.")
+                currentPlayerNum = (currentPlayerNum + 1) % len(playerList)
+            # 3. Check for Wild card (if allowed)
+            elif [card for card in self.hand if card.action == 'wild']:
+                wild_cards = [card for card in self.hand if card.action == 'wild']
+                card_played = wild_cards[0]
+                self.play_card(card_played, pile)
+                print(f"{self.name} played: {card_played}")
+
+                # Choose a random color
+                new_color = random.choice(['red', 'blue', 'green', 'yellow'])
+                card_played.color = new_color
+                print(f"The new color is {card_played.color}")
+            else:
+                # 4. Draw a card if no playable card
+                print("AI cannot play, drawing a card.")
+                newcard = self.draw_card(deck)
+                print(f"AI drew: {newcard}")
+                if newcard.is_match(topcard):
+                    self.play_card(newcard, pile)
+                    print(f"AI played: {newcard}")
+                else:
+                    print("AI cannot play the drawn card.")
+        return currentPlayerNum
+#
